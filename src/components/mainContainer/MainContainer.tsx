@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const MainContainer = () => {
   const [displayedForm, setDisplayedForm] = useState("URL");
+  const [finalUrl, setFinalUrl] = useState("Final Url");
 
   return (
     <div id={styles.mainContainer}>
@@ -31,14 +32,14 @@ const MainContainer = () => {
       </div>
 
       {displayedForm === "URL" ? (
-        <FormLink />
+        <FormLink setFinalUrl={setFinalUrl} />
       ) : displayedForm === "NOTE" ? (
-        <FormNote />
+        <FormNote setFinalUrl={setFinalUrl} />
       ) : displayedForm === "FILE" ? (
-        <FormFile />
+        <FormFile setFinalUrl={setFinalUrl} />
       ) : null}
 
-      <div id={styles.finalUrl}>Final URL</div>
+      <div id={styles.finalUrl}>{finalUrl}</div>
     </div>
   );
 };
