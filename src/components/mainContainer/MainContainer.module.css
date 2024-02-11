@@ -3,11 +3,103 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 90%;
+  gap: 1em;
 }
 
 #formTypes {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
   gap: 10px;
+}
+
+.formType {
+  background-color: var(--primary);
+  font-size: 1.5em;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  max-width: 310px;
+  border: 5px black solid;
+}
+
+.mainForm {
+  background-color: var(--secondary);
+  width: 90%;
+  max-width: 1100px;
+  height: 150px;
+  border: solid 5px black;
+  padding: 2em;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+input {
+  outline: none;
+  border: 5px solid black;
+  background-color: transparent;
+  width: 90%;
+  padding: 0.5em;
+  font: inherit;
+
+  font-size: large;
+}
+::placeholder {
+  text-align: center;
+  font: inherit;
+  font-weight: 600;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  /* outline: inherit; */
+  border: 5px black solid;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+button:hover {
+  box-shadow: 5px 5px;
+  transition: box-shadow 0.1s;
+}
+button:active {
+  margin: 5px 0 0 5px;
+  /* transition: margin 0.1s; */
+}
+
+#submitButton {
+  background: var(--accent);
+
+  width: 20%;
+  padding: 0.5em;
+}
+
+#finalUrl {
+  border: 5px black solid;
+  width: 90%;
+  padding: 0.5em;
+  background-color: var(--accent);
+  max-width: 1000px;
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (min-width: 575px) {
+  #formTypes {
+    flex-direction: row;
+  }
+  input {
+    width: 70%;
+  }
+  #finalUrl {
+    width: 70%;
+  }
 }

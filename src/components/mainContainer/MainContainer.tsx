@@ -10,24 +10,24 @@ const MainContainer = () => {
   return (
     <div id={styles.mainContainer}>
       <div id={styles.formTypes}>
-        <div
+        <button
           className={styles.formType}
           onClick={() => setDisplayedForm("URL")}
         >
           Link
-        </div>
-        <div
+        </button>
+        <button
           className={styles.formType}
           onClick={() => setDisplayedForm("NOTE")}
         >
           Note
-        </div>
-        <div
+        </button>
+        <button
           className={styles.formType}
           onClick={() => setDisplayedForm("FILE")}
         >
           File
-        </div>
+        </button>
       </div>
 
       {displayedForm === "URL" ? (
@@ -38,7 +38,7 @@ const MainContainer = () => {
         <FormFile />
       ) : null}
 
-      <div id={styles.finalUrl}>URL</div>
+      <div id={styles.finalUrl}>Final URL</div>
     </div>
   );
 };

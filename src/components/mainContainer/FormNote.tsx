@@ -5,6 +5,8 @@ const FormNote = () => {
     <div className={styles.mainForm} id={styles.formNote}>
       <input type="text" name="" placeholder="Title" />
       <input type="text" name="" id="" placeholder="Note" />
+
+      <button id={styles.submitButton}>⚡</button>
     </div>
   );
 };
