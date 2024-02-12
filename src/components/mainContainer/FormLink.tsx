@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import supabase from "../supabaseClient";
 import styles from "./MainContainer.module.css";
 
@@ -8,6 +8,18 @@ interface FormFileProps {
 
 const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   const [originalUrl, setOriginalUrl] = useState<string>("");
+  const [originalUrlBorder, setOriginalUrlBorder] = useState<string>();
+  const [activateBorders, setActivateBorders] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (activateBorders) {
+      if (!originalUrl) {
+        setOriginalUrlBorder("red");
+      } else {
+        setOriginalUrlBorder("black");
+      }
+    }
+  }, [activateBorders, originalUrl]);
 
   async function handleNewLink() {
     if (originalUrl) {
@@ -21,6 +33,9 @@ const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
         // console.log(data);
         setFinalUrl(`${window.location.href}l/${data[0].id}`);
       }
+    } else {
+      setActivateBorders(true);
+      setFinalUrl("Some values are missing");
     }
   }
 
@@ -32,6 +47,7 @@ const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
         placeholder="URL"
         value={originalUrl}
         onChange={(e) => setOriginalUrl(e.target.value)}
+        style={{ borderColor: originalUrlBorder }}
       />
       <button id={styles.submitButton} onClick={handleNewLink}>
         ⚡
