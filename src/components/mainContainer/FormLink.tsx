@@ -19,9 +19,7 @@ const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
         console.error(error);
       } else {
         // console.log(data);
-        setFinalUrl(
-          `${import.meta.env.SITE}${import.meta.env.BASE_URL}l/${data[0].id}`,
-        );
+        setFinalUrl(`${window.location.href}l/${data[0].id}`);
       }
     }
   }
