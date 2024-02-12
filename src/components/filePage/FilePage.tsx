@@ -19,7 +19,7 @@ const FilePage = () => {
             console.error("Error fetching data:", listError);
           } else if (listData && listData.length > 0) {
             setFileName(listData[0].name);
-            console.log(listData);
+            // console.log(listData);
           }
 
           // Download a file
@@ -32,7 +32,7 @@ const FilePage = () => {
             if (downloadError) {
               console.error("Error downloading file:", downloadError);
             } else {
-              console.log(downloadData);
+              //   console.log(downloadData);
               setFileBlob(downloadData);
             }
           }
