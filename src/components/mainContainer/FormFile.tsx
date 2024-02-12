@@ -68,7 +68,6 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       setFinalUrl(`${window.location.href}f/${filesSelect[0]?.id}`);
     } catch (error) {
       console.error(error);
-      // Handle or log the error as needed
     }
   }
 
