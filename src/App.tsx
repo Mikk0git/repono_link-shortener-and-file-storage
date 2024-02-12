@@ -1,11 +1,16 @@
 import MainContainer from "./components/mainContainer/MainContainer";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <main>
-        <MainContainer />
-      </main>
+      <Router>
+        <main>
+          <Routes>
+            <Route path="/" element={<MainContainer />} />
+          </Routes>
+        </main>
+      </Router>
     </>
   );
 }
