@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState
+import { useEffect, useState } from "react"; // Import useState
 import supabase from "../supabaseClient";
 import styles from "./MainContainer.module.css";
 
@@ -8,13 +8,27 @@ interface FormFileProps {
 
 const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   const [file, setFile] = useState<File | null>(null);
+  const [fileBorder, setFileBorder] = useState<string>();
+  const [activateBorders, setActivateBorders] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (activateBorders) {
+      if (!file) {
+        setFileBorder("red");
+      } else {
+        setFileBorder("black");
+      }
+    }
+  }, [activateBorders, file]);
 
   async function handleNewFile() {
     try {
       if (!file) {
         setFinalUrl("Please select a file.");
+        setActivateBorders(true);
         return;
       }
+      setActivateBorders(false);
 
       // Upload file to Supabase storage
       const { data: filesUpload, error: uploadError } = await supabase.storage
@@ -68,7 +82,13 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
 
   return (
     <div className={styles.mainForm} id={styles.formFile}>
-      <input type="file" name="" id="" onChange={handleFileChange} />
+      <input
+        type="file"
+        name=""
+        id=""
+        onChange={handleFileChange}
+        style={{ borderColor: fileBorder }}
+      />
       <button id={styles.submitButton} onClick={handleNewFile}>
         ⚡
       </button>
