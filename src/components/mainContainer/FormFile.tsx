@@ -32,6 +32,8 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       const { data: filesSelect, error: selectError } = await supabase
         .from("files")
         .select("id")
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         .eq(`file_id`, `${filesUpload.id}`);
 
       if (selectError) {
