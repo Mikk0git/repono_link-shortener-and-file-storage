@@ -3,5 +3,5 @@
 ### Beta WIP 👷‍♀️
 
 ![Link Shortener](screenshots/link.png)
-![Note maker](screenshots\link.png)
-![alt text](screenshots\note.png)
+![Note maker](screenshots/link.png)
+![alt text](screenshots/note.png)
