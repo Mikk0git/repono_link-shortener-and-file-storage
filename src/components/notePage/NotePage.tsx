@@ -38,14 +38,14 @@ const LinkPage = () => {
       <>
         {noteTitle ? (
           <div>
-            <h1>{noteTitle}</h1>//todo Make it look 🌟nice🌟
+            <h1>{noteTitle}</h1>
             <p>{noteText} </p>
           </div>
         ) : (
           <h1>404 site not found</h1>
         )}
       </>
-    );
+    ); //todo Make it look 🌟nice🌟
   }
 };
 
