@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const MainContainer = () => {
   const [displayedForm, setDisplayedForm] = useState("URL");
-  const [finalUrl, setFinalUrl] = useState("Final Url");
+  const [finalUrl, setFinalUrl] = useState<string>("");
 
   return (
     <div id={styles.mainContainer}>

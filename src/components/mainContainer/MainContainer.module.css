@@ -90,6 +90,7 @@ button:active {
   max-width: 1000px;
   text-align: center;
   font-weight: 600;
+  height: 25px;
 }
 
 @media (min-width: 575px) {

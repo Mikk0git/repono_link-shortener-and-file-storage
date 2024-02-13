@@ -22,6 +22,8 @@ const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   }, [activateBorders, originalUrl]);
 
   async function handleNewLink() {
+    setFinalUrl("Loading...");
+
     if (originalUrl) {
       const { data, error } = await supabase
         .from("links")

@@ -28,6 +28,8 @@ const FormNote: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   }, [activateBorders, noteText, noteTitle]);
 
   async function handleNewNote() {
+    setFinalUrl("Loading...");
+
     if (noteTitle && noteText) {
       const { data, error } = await supabase
         .from("notes")

@@ -22,6 +22,8 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   }, [activateBorders, file]);
 
   async function handleNewFile() {
+    setFinalUrl("Loading...");
+
     try {
       if (!file) {
         setFinalUrl("Please select a file.");
