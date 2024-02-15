@@ -15,6 +15,8 @@ const matrixEffectAsync = async (
 
   // Gradually reveal the password
   for (let i = 0; i < urlArray.length; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 75));
+
     finalUrlArray = finalUrlArray.slice(0, i);
     for (let j = 0; j + i < urlArray.length; j++) {
       finalUrlArray.push(alphabet[getRandomInt(0, alphabet.length - 1)]);
@@ -23,7 +25,6 @@ const matrixEffectAsync = async (
 
     finalUrlArray[i] = urlArray[i];
     setFinalUrl(finalUrlArray.join(""));
-    await new Promise((resolve) => setTimeout(resolve, 100));
   }
 };
 
@@ -34,13 +35,13 @@ const matrixLoadingAsync = async (
   let finalUrlArray: string[] = [];
 
   // Generate a random string
+  await new Promise((resolve) => setTimeout(resolve, 75));
 
   for (let i = 0; i < window.location.href.length + 6; i++) {
     finalUrlArray.push(alphabet[getRandomInt(0, alphabet.length - 1)]);
   }
   setFinalUrl(finalUrlArray.join(""));
   finalUrlArray = [];
-  await new Promise((resolve) => setTimeout(resolve, 100));
 };
 
 export default { matrixEffectAsync, matrixLoadingAsync };
