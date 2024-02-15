@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"; // Import useState
 import supabase from "../supabaseClient";
 import styles from "./MainContainer.module.css";
+import matrixEffect from "./matrixEffect";
 
 interface FormFileProps {
   setFinalUrl: React.Dispatch<React.SetStateAction<string>>;
@@ -10,6 +11,7 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   const [file, setFile] = useState<File | null>(null);
   const [fileBorder, setFileBorder] = useState<string>();
   const [activateBorders, setActivateBorders] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (activateBorders) {
@@ -22,8 +24,6 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   }, [activateBorders, file]);
 
   async function handleNewFile() {
-    setFinalUrl("Loading...");
-
     try {
       if (!file) {
         setFinalUrl("Please select a file.");
@@ -31,6 +31,7 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
         return;
       }
       setActivateBorders(false);
+      setIsLoading(true);
 
       // Upload file to Supabase storage
       const { data: filesUpload, error: uploadError } = await supabase.storage
@@ -67,11 +68,22 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       }
 
       console.log(filesMove);
-      setFinalUrl(`${window.location.href}f/${filesSelect[0]?.id}`);
+      setIsLoading(false);
+      matrixEffect.matrixEffectAsync(
+        `${window.location.href}f/${filesSelect[0]?.id}`,
+        setFinalUrl
+      );
     } catch (error) {
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    if (isLoading) {
+      matrixEffect.matrixLoadingAsync(setFinalUrl);
+    }
+  }),
+    [isLoading];
 
   // Handle file input change
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
