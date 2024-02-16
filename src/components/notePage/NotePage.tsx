@@ -6,11 +6,14 @@ const LinkPage = () => {
   const { id } = useParams<string>();
   const [noteTitle, setNoteTitle] = useState<string | null>();
   const [noteText, setNoteText] = useState<string | null>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (typeof id === "string") {
+          setIsLoading(true);
+
           const trimmedId = id?.replace("+", "");
           const { data, error } = await supabase
             .from("notes")
@@ -20,6 +23,7 @@ const LinkPage = () => {
           if (error) {
             console.error("Error fetching data:", error.message);
           } else {
+            setIsLoading(false);
             setNoteTitle(data[0]?.title);
             setNoteText(data[0]?.text);
             console.log(noteTitle);
@@ -34,18 +38,16 @@ const LinkPage = () => {
     fetchData();
   }, [id, noteText, noteTitle]);
   if (id) {
-    return (
-      <>
-        {noteTitle ? (
-          <div>
-            <h1>{noteTitle}</h1>
-            <p>{noteText} </p>
-          </div>
-        ) : (
-          <h1>404 site not found</h1>
-        )}
-      </>
-    ); //todo Make it look 🌟nice🌟
+    return isLoading ? (
+      "Loading"
+    ) : noteTitle ? (
+      <div>
+        <h1>{noteTitle}</h1>
+        <p>{noteText}</p>
+      </div>
+    ) : (
+      "404 site not found"
+    );
   }
 };
 

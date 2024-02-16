@@ -6,11 +6,13 @@ const FilePage = () => {
   const { id } = useParams<string>();
   const [fileName, setFileName] = useState<string>();
   const [fileBlob, setFileBlob] = useState<Blob | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (typeof id === "string") {
+          setIsLoading(true);
           //List files (there should be only one) in folder
           const { data: listData, error: listError } = await supabase.storage
             .from("files")
@@ -20,6 +22,8 @@ const FilePage = () => {
           } else if (listData && listData.length > 0) {
             setFileName(listData[0].name);
             // console.log(listData);
+          } else {
+            setIsLoading(false);
           }
 
           // Download a file
@@ -33,12 +37,15 @@ const FilePage = () => {
               console.error("Error downloading file:", downloadError);
             } else {
               //   console.log(downloadData);
+
               setFileBlob(downloadData);
+              setIsLoading(false);
             }
           }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
 
@@ -47,7 +54,9 @@ const FilePage = () => {
   if (id) {
     return (
       <>
-        {fileBlob ? (
+        {isLoading ? (
+          "Loading"
+        ) : fileBlob ? (
           <>
             <a href={URL.createObjectURL(fileBlob)} download={fileName}>
               Download
