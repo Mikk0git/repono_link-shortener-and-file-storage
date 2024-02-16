@@ -69,10 +69,9 @@ const FormNote: React.FC<FormFileProps> = ({ setFinalUrl }) => {
         onChange={(e) => setNoteTitle(e.target.value)}
         style={{ borderColor: noteTitleBorder }}
       />
-      <input
-        type="text"
+      <textarea
         name=""
-        id=""
+        id={styles.formNoteText}
         placeholder="Note"
         onChange={(e) => setNoteText(e.target.value)}
         style={{ borderColor: noteTextBorder }}

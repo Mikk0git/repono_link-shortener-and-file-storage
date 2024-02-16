@@ -30,7 +30,7 @@
   background-color: var(--secondary);
   width: 90%;
   max-width: 1100px;
-  height: 150px;
+  /* height: 150px; */
   border: solid 5px black;
   padding: 2em;
 
@@ -55,6 +55,23 @@ input {
   text-align: center;
   font: inherit;
   font-weight: 600;
+}
+textarea {
+  outline: none;
+  border: 5px solid black;
+  background-color: transparent;
+  width: 90%;
+  padding: 0.5em;
+  font: inherit;
+
+  font-size: large;
+  resize: vertical;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+textarea::-webkit-scrollbar {
+  /* Hiding scrollbar for Chrome, Safari and Opera */
+  display: none;
 }
 
 button {
@@ -97,7 +114,8 @@ button:active {
   #formTypes {
     flex-direction: row;
   }
-  input {
+  input,
+  textarea {
     width: 70%;
   }
   #finalUrl {
