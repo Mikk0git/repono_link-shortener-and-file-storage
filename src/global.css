@@ -2,12 +2,14 @@
 
 :root {
   --text: #031612;
-  --background: #eefdf9;
-  --primary: #1ce4b7;
-  --secondary: #89b5f1;
-  --accent: #5371ea;
+  --background: #fff;
+  --primary: #000;
+  --secondary: #6c6c6c;
+  --accent: #e0e0e0;
 }
-
+* {
+  margin: 0;
+}
 body {
   background-color: var(--background);
 
