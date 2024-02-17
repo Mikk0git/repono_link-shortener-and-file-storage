@@ -1,0 +1,24 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* TODO change this in the future */
+  bottom: 0;
+  width: 100%;
+}
+
+.h2 {
+  font-size: 1em;
+  font-weight: normal;
+  color: var(--text);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}

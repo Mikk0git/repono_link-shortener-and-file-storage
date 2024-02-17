@@ -3,6 +3,7 @@ import MainContainer from "./components/mainContainer/MainContainer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NotePage from "./components/notePage/NotePage";
 import FilePage from "./components/filePage/FilePage";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/f/:id" element={<FilePage />} />
           </Routes>
         </main>
+        <Footer />
       </Router>
     </>
   );
