@@ -39,6 +39,14 @@
   gap: 0.5em;
 }
 
+#activeType {
+  border-bottom: solid var(--primary) 3px;
+  position: absolute;
+  top: 0;
+  transform: translate(-100%);
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+
 input {
   outline: none;
   border: 2px solid var(--accent);
@@ -88,10 +96,10 @@ button {
   box-shadow: 5px 5px;
   transition: box-shadow 0.1s;
 } */
-button:active {
-  /* margin: 5px 0 0 5px; */
-  /* transition: margin 0.1s; */
-}
+/* button:active {
+  margin: 5px 0 0 5px;
+  transition: margin 0.1s;
+} */
 
 #submitButton {
   background: var(--primary);
@@ -113,22 +121,6 @@ button:active {
   height: 25px;
 }
 
-@media (min-width: 575px) {
-  #mainContainer {
-    width: 70%;
-  }
-
-  input,
-  textarea {
-    width: 70%;
-  }
-  #finalUrl {
-    max-width: 450px;
-
-    width: 50%;
-  }
-}
-
 @media (min-width: 400px) {
   #finalUrl {
     font-size: initial;
@@ -137,5 +129,21 @@ button:active {
   }
   #mainContainer {
     width: 90%;
+  }
+
+  @media (min-width: 575px) {
+    #mainContainer {
+      width: 70%;
+    }
+
+    input,
+    textarea {
+      width: 70%;
+    }
+    #finalUrl {
+      max-width: 450px;
+
+      width: 50%;
+    }
   }
 }
