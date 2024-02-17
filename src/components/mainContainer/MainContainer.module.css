@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 95%;
   gap: 1em;
 }
 
@@ -13,15 +13,15 @@
   justify-content: center;
   width: 100%;
   gap: 10px;
+  border-bottom: 2px var(--accent) solid;
 }
 
 .formType {
   background-color: transparent;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 400;
   width: 100%;
   text-align: center;
-  border: 5px black solid;
 }
 
 .mainForm {
@@ -29,7 +29,7 @@
   width: 100%;
   max-width: 1100px;
   /* height: 150px; */
-  border: solid 5px black;
+  /* border: solid 5px black; */
   padding: 2em 0 2em 0;
 
   display: flex;
@@ -41,10 +41,11 @@
 
 input {
   outline: none;
-  border: 5px solid black;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
   background-color: transparent;
   width: 80%;
-  padding: 0.5em;
+  padding: 0.7em;
   font: inherit;
 
   font-size: large;
@@ -56,11 +57,11 @@ input {
 }
 textarea {
   outline: none;
-  border: 5px solid black;
   background-color: transparent;
   width: 90%;
   padding: 0.5em;
   font: inherit;
+  border: 2px solid var(--accent);
 
   font-size: large;
   resize: vertical;
@@ -77,16 +78,18 @@ button {
   font: inherit;
   cursor: pointer;
   /* outline: inherit; */
-  border: 5px black solid;
+  /* border: 5px black solid; */
+  border: none;
+  border-radius: 30px;
   margin-bottom: 5px;
-  margin-right: 5px;
+  margin-top: 5px;
 }
-button:hover {
+/* button:hover {
   box-shadow: 5px 5px;
   transition: box-shadow 0.1s;
-}
+} */
 button:active {
-  margin: 5px 0 0 5px;
+  /* margin: 5px 0 0 5px; */
   /* transition: margin 0.1s; */
 }
 
@@ -94,17 +97,19 @@ button:active {
   background: var(--primary);
 
   width: 20%;
-  padding: 0.5em;
+  padding: 0.8em;
 }
 
 #finalUrl {
-  border: 5px black solid;
-  width: 90%;
-  padding: 0.5em;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   background-color: transparent;
   max-width: 1000px;
   text-align: center;
-  font-weight: 600;
   height: 25px;
 }
 
@@ -118,6 +123,19 @@ button:active {
     width: 70%;
   }
   #finalUrl {
-    width: 70%;
+    max-width: 450px;
+
+    width: 50%;
+  }
+}
+
+@media (min-width: 400px) {
+  #finalUrl {
+    font-size: initial;
+    width: 95%;
+    font-weight: 600;
+  }
+  #mainContainer {
+    width: 90%;
   }
 }

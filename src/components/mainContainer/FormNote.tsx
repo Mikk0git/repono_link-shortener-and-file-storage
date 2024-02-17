@@ -7,9 +7,9 @@ interface FormFileProps {
 }
 const FormNote: React.FC<FormFileProps> = ({ setFinalUrl }) => {
   const [noteTitle, setNoteTitle] = useState<string | null>();
-  const [noteTitleBorder, setNoteTitleBorder] = useState<string>("black");
+  const [noteTitleBorder, setNoteTitleBorder] = useState<string>();
   const [noteText, setNoteText] = useState<string | null>();
-  const [noteTextBorder, setNoteTextBorder] = useState<string>("black");
+  const [noteTextBorder, setNoteTextBorder] = useState<string>();
   const [activateBorders, setActivateBorders] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,13 +18,13 @@ const FormNote: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       if (!noteTitle) {
         setNoteTitleBorder("red");
       } else {
-        setNoteTitleBorder("black");
+        setNoteTitleBorder("var(--accent)");
       }
       if (!noteText) {
         setNoteTextBorder("red");
         return;
       } else {
-        setNoteTextBorder("black");
+        setNoteTextBorder("var(--accent)");
       }
     }
   }, [activateBorders, noteText, noteTitle]);

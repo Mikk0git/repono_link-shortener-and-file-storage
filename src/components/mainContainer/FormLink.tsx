@@ -18,7 +18,7 @@ const FormLink: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       if (!originalUrl) {
         setOriginalUrlBorder("red");
       } else {
-        setOriginalUrlBorder("black");
+        setOriginalUrlBorder("var(--accent)");
       }
     }
   }, [activateBorders, originalUrl]);

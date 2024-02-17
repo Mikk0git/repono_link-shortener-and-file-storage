@@ -18,7 +18,7 @@ const FormFile: React.FC<FormFileProps> = ({ setFinalUrl }) => {
       if (!file) {
         setFileBorder("red");
       } else {
-        setFileBorder("black");
+        setFileBorder("var(--accent)");
       }
     }
   }, [activateBorders, file]);
