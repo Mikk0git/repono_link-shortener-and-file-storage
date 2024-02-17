@@ -11,28 +11,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   width: 100%;
   gap: 10px;
 }
 
 .formType {
-  background-color: var(--primary);
+  background-color: transparent;
   font-size: 1.5em;
   font-weight: 400;
   width: 100%;
   text-align: center;
-  max-width: 310px;
   border: 5px black solid;
 }
 
 .mainForm {
-  background-color: var(--secondary);
-  width: 90%;
+  background-color: transparent;
+  width: 100%;
   max-width: 1100px;
   /* height: 150px; */
   border: solid 5px black;
-  padding: 2em;
+  padding: 2em 0 2em 0;
 
   display: flex;
   align-items: center;
@@ -45,7 +43,7 @@ input {
   outline: none;
   border: 5px solid black;
   background-color: transparent;
-  width: 90%;
+  width: 80%;
   padding: 0.5em;
   font: inherit;
 
@@ -93,7 +91,7 @@ button:active {
 }
 
 #submitButton {
-  background: var(--accent);
+  background: var(--primary);
 
   width: 20%;
   padding: 0.5em;
@@ -103,7 +101,7 @@ button:active {
   border: 5px black solid;
   width: 90%;
   padding: 0.5em;
-  background-color: var(--accent);
+  background-color: transparent;
   max-width: 1000px;
   text-align: center;
   font-weight: 600;
@@ -111,9 +109,10 @@ button:active {
 }
 
 @media (min-width: 575px) {
-  #formTypes {
-    flex-direction: row;
+  #mainContainer {
+    width: 70%;
   }
+
   input,
   textarea {
     width: 70%;
