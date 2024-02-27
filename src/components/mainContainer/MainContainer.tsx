@@ -2,19 +2,23 @@ import styles from "./MainContainer.module.css";
 import FormLink from "./FormLink";
 import FormNote from "./FormNote";
 import FormFile from "./FormFile";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { MenuButtonContext } from "../../contexts/MenuButtonContext";
 
 const MainContainer = () => {
   const [displayedForm, setDisplayedForm] = useState("URL");
   const [finalUrl, setFinalUrl] = useState<string>("");
   const formTypesRef = useRef<HTMLDivElement>(null);
   const [activeTypeStyle, setActiveTypeStyle] = useState({});
+  const { isMenuButtonClicked } = useContext(MenuButtonContext);
 
   useEffect(() => {
     const updateActiveTypeStyle = () => {
       if (formTypesRef.current !== null) {
         const divWidth = formTypesRef.current.offsetWidth;
         const divHeight = formTypesRef.current.offsetHeight;
+        const divTop = formTypesRef.current.getBoundingClientRect().top;
+        console.log(`divPosition: ${divTop}`);
         console.log(`divWidth: ${divWidth}`);
         console.log(`divHeight: ${divHeight}`);
 
@@ -32,7 +36,8 @@ const MainContainer = () => {
         }
 
         setActiveTypeStyle({
-          height: `${divHeight - 2}px`,
+          margin: `${divTop}px 0px 0px 0px`,
+          height: `${divHeight - 3}px`,
           width: `${divWidth / 3}px`,
           transform: `translateX(${transValue}%)`,
         });
@@ -48,8 +53,7 @@ const MainContainer = () => {
     return () => {
       resizeObserver.disconnect();
     };
-  }, [displayedForm]);
-
+  }, [displayedForm, isMenuButtonClicked]);
   return (
     <div id={styles.mainContainer}>
       <div id={styles.activeType} style={activeTypeStyle}></div>
