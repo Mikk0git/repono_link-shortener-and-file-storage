@@ -86,7 +86,14 @@ const MainContainer = () => {
         <FormFile setFinalUrl={setFinalUrl} />
       ) : null}
 
-      <div id={styles.finalUrl}>{finalUrl}</div>
+      <div
+        id={styles.finalUrl}
+        onClick={() => {
+          navigator.clipboard.writeText(finalUrl);
+        }}
+      >
+        {finalUrl}
+      </div>
     </div>
   );
 };
